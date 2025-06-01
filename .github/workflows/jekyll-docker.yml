@@ -1,0 +1,20 @@
+名字 ：名字：JEKYLL 网站 CI
+
+
+
+  "主要" ]
+
+    分支 : [     分支 : [  "主分支"  ] "主分支"  ]
+
+工作：
+  构建：
+
+    运行于 ：      运行于：ubuntu-latest
+
+    步骤：
+    - 使用 :      - 使用: actions/checkout@v4
+    - name :      - name : 在jekyll/builder容器中构建网站
+      运行： |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
